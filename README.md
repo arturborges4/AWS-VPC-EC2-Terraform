@@ -115,11 +115,11 @@ resource "aws_security_group" "allow_ssh_http" {
 Finalmente, iremos criar nossa instância EC2 associada à subnet. Também devemos associar uma "key-pair" para fazer o acesso via SSH. 
 ```
 resource "aws_instance" "ec2-instance" {
-  ami           = "ami-0e86e20dae9224db8"
-  instance_type = "t2.micro"
-  key_name      = "terraform-acesso"
-  subnet_id     = aws_subnet.subnet.id
-
+  ami                    = "ami-0e86e20dae9224db8"
+  instance_type          = "t2.micro"
+  key_name               = "terraform-acesso"
+  subnet_id              = aws_subnet.subnet.id
+  vpc_security_group_ids = [aws_security_group.allow_ssh_http.id]
 
   tags = {
     Name = "ExampleInstance"
@@ -127,7 +127,7 @@ resource "aws_instance" "ec2-instance" {
 }
 
 ```
-Dessa forma estamos criando uma instância simples que se enquadra no free-tier da AWS (não vai gerar cobranças), usando uma imagem Ubuntu e associando nossa KeyPair e nossa Subnet da VPC. 
+Dessa forma estamos criando uma instância simples que se enquadra no free-tier da AWS (não vai gerar cobranças), usando uma imagem Ubuntu e associando nossa KeyPair, nossa Subnet da VPC e o <i>security group</i>. 
 
 <h2>Comandos no console</h2>
 
@@ -149,5 +149,5 @@ Vamos prosseguir com <i>terraform plan -out plan.out</i>, que nos apresenta um r
 Por fim, com <i>terraform apply plan.out</i> podemos usar o arquivo de resumo para aplicar o provisionamento dos recursos nas AWS.
 ![apply_6](https://github.com/user-attachments/assets/f941db9c-0736-4362-a31d-24ef0c4efd8a)
 
-
+Nossos recursos foram criados com sucesso na Núvem, e nossa instância já está pronta para ser acessada. 
 
