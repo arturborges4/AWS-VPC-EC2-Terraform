@@ -130,3 +130,8 @@ resource "aws_instance" "ec2-instance" {
 Dessa forma estamos criando uma instância simples que se enquadra no free-tier da AWS (não vai gerar cobranças), usando uma imagem Ubuntu e associando nossa KeyPair e nossa Subnet da VPC. 
 
 <h2>Comandos no console</h2>
+
+Primeiramente temos que inserir nossas credenciais AWS como variáveis de ambiente para que o Terraform possa acessar nossa conta. 
+
+![Console_2](https://github.com/user-attachments/assets/f8c3974c-5d94-479a-b902-dd5854ce4238)
+
