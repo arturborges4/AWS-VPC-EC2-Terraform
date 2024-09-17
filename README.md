@@ -142,4 +142,8 @@ Um comando muito útil é o <i>terraform fmt</i>, que corrige incosistências na
 
 ![fmt_4](https://github.com/user-attachments/assets/023acb33-62b8-4bbc-93b7-817f8e7c7d7a)
 
+Vamos prosseguir com <i>terraform plan -out plan.out</i>, que nos apresenta um resumo de todos os recursos que serão criados e exporta para um arquivo.
+
+![plan_5](https://github.com/user-attachments/assets/e9dd8868-5171-434f-b5eb-bad5871f1597)
+
 
