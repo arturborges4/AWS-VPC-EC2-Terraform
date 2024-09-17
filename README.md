@@ -33,7 +33,7 @@ provider "aws" {
 ```
 
 Após configurar o <i>provider</i> podemos seguir para o próximo arquivo, que será a configuração da nossa VPC. 
-Para esse experimento, vamos criar uma rede privada que tem acesso à internet para que nossa instância consiga "pingar" para fora, ou seja, liberar o trafego ICMP. 
+Para esse experimento, vamos criar uma rede privada que tem acesso à internet para que nossa instância consiga "pingar" para fora. 
 Vamos precisar de alguns recursos adicionais dentro da nossa VPC, que possibilitarão o acesso para fora. Esse recursos são uma Subnet com mapeamento de IP publico, um Internet Gateway associoado à nossa VPC, uma Route Table e uma Route Table Association para associar à nossa subnet pública e possibilitar o acesso à internet. 
 
 ```
@@ -150,4 +150,8 @@ Por fim, com <i>terraform apply plan.out</i> podemos usar o arquivo de resumo pa
 ![apply_6](https://github.com/user-attachments/assets/f941db9c-0736-4362-a31d-24ef0c4efd8a)
 
 Nossos recursos foram criados com sucesso na Núvem, e nossa instância já está pronta para ser acessada. 
+
+![putty_7](https://github.com/user-attachments/assets/f775f76a-5dce-4245-94fe-ad9658596de3)
+
+Como se pode observar, nossa VM pegou um ip da subnet e já está pingando para fora através do protocolo ICMP, liberado por padrão nas regras de Outbound da AWS. Se quisessemos pingar da nossa maquina para a VM, teriamos que liberar explicitamente a porta para o protocolo ICMP no nosso <i>Security Group</i>. 
 
