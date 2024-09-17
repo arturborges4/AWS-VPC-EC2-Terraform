@@ -138,4 +138,8 @@ Primeiramente temos que inserir nossas credenciais AWS como variáveis de ambien
 Depois podemos digitar <i>terraform init</i> para inicializar a criação das dependências do nosso <i>Provider</i>.
 ![init_3](https://github.com/user-attachments/assets/6b4d9d59-d642-4a51-a1f4-f6b5581fc6c5)
 
+Um comando muito útil é o <i>terraform fmt</i>, que corrige incosistências na formatação dos nossos codigos e nos retorna os arquivos que foram corrigidos. 
+
+![fmt_4](https://github.com/user-attachments/assets/023acb33-62b8-4bbc-93b7-817f8e7c7d7a)
+
 
