@@ -14,3 +14,19 @@ O primeiro arquivo que vamos criar será o "main.tf", onde vamos declarar os nos
 
 ![Provider_1](https://github.com/user-attachments/assets/f37733a6-531e-4dfa-b578-6e82e49f04a7)
 
+Vamos colar o código em nosso arquivo "main.tf" e fazer apenas algumas modificações. Devemos escolher uma região da AWS onde nossos recursos serão alocados, nesse caso irei usar "us-east-1" como padrão. 
+```
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "5.67.0"
+    }
+  }
+}
+
+provider "aws" {
+  region = "us-east-1"
+}
+
+```
