@@ -113,4 +113,20 @@ resource "aws_security_group" "allow_ssh_http" {
 
 ```
 Finalmente, iremos criar nossa instância EC2 associada à subnet. Também devemos associar uma "key-pair" para fazer o acesso via SSH. 
+```
+resource "aws_instance" "ec2-instance" {
+  ami           = "ami-0c55b159cbfafe1f0"
+  instance_type = "t2.micro"
+  key_name      = "terraform-acesso"
+  subnet_id = aws_vpc.vpc.id
 
+
+  tags = {
+    Name = "ExampleInstance"
+  }
+}
+
+```
+Dessa forma estamos criando uma instância simples que se enquadra no free-tier da AWS (não vai gerar cobranças), usando uma imagem Ubuntu e associando nossa KeyPair e nossa Subnet da VPC. 
+
+<h2>Comandos no console</h2>
