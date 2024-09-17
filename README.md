@@ -1,5 +1,5 @@
 <h1>IaC para AWS - Criando VPC e uma Instância EC2 com Terraform</h1>
-Projeto para criar Redes Virtuais VPC na AWS usando IaC (Terraform)
+Projeto para provisionar uma Rede Virtual VPC e uma máquina virtual EC2 na AWS usando IaC (Terraform)
 
 <h2>Objetivo</h2>
 
