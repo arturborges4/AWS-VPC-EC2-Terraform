@@ -11,4 +11,5 @@ O Terraform é uma ferramente de IaC desenvolvida pela HashiCorp que utiliza sua
 <h3>📜Passo a passo</h3>
 Primeiramente vamos fazer a criação do diretório e abrir com um editor de código (Visual Studio).
 O primeiro arquivo que vamos criar será o "main.tf", onde vamos declarar os nosso <i>Provider</i>. O terraform pode ser usado com vários provedores diferentes, e eles são tratados como parte do código. Na documentação oficial podemos encontrar o bloco referente ao <i>provider</i> da AWS.
-![image](https://github.com/user-attachments/assets/ec2aee8a-1ffa-4e0a-b4ea-2683ccf90ecb)
+
+![Provider1](https://github.com/user-attachments/assets/358d7c4b-19a4-4737-8df8-6d800a0d5b76)
