@@ -1,4 +1,4 @@
-<h1>IaC para AWS (criando VPC e uma Instância EC2</h1>
+<h1>IaC para AWS - Criando VPC e uma Instância EC2 com Terraform</h1>
 Projeto para criar Redes Virtuais VPC na AWS usando IaC (Terraform)
 
 <h2>Objetivo</h2>
