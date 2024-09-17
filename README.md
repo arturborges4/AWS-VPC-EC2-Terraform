@@ -31,3 +31,86 @@ provider "aws" {
 }
 
 ```
+
+Após configurar o <i>provider</i> podemos seguir para o próximo arquivo, que será a configuração da nossa VPC. 
+Para esse experimento, vamos criar uma rede privada que tem acesso à internet para que nossa instância consiga "pingar" para fora, ou seja, liberar o trafego ICMP. 
+Vamos precisar de alguns recursos adicionais dentro da nossa VPC, que possibilitarão o acesso para fora. Esse recursos são uma Subnet com mapeamento de IP publico, um Internet Gateway associoado à nossa VPC, uma Route Table e uma Route Table Association para associar à nossa subnet pública e possibilitar o acesso à internet. 
+
+```
+resource "aws_vpc" "vpc" {
+  cidr_block = "10.0.0.0/16"
+
+  tags = {
+    Name = "vpc-terraform"
+  }
+}
+resource "aws_subnet" "subnet" {
+  vpc_id     = aws_vpc.vpc.id
+  cidr_block = "10.0.1.0/24"
+  map_public_ip_on_launch = true
+
+  tags = {
+    Name = "subnet-terraform"
+  }
+}
+resource "aws_internet_gateway" "internet_gateway" {
+  vpc_id = aws_vpc.vpc.id
+
+  tags = {
+    Name = "internet-gateway-terraform"
+  }
+}
+resource "aws_route_table" "route_table" {
+  vpc_id = aws_vpc.vpc.id
+
+  route {
+    cidr_block             = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.internet_gateway.id
+  }
+
+  tags = {
+    Name = "route-table-terraform"
+  }
+}
+resource "aws_route_table_association" "rta" {
+  subnet_id      = aws_subnet.subnet.id
+  route_table_id = aws_route_table.route_table.id
+}
+
+```
+
+Para criar uma camada de proteção, vamos adiconar um <i>Security Group</i> à nossa VPC para limitar o trafego e liberar apenas o acesso necessário (acesso SSH (porta 22) e HTTP (porta 80)). 
+
+```
+resource "aws_security_group" "allow_ssh_http" {
+  vpc_id = aws_vpc.vpc.id
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "allow_ssh_http"
+  }
+}
+
+```
+Finalmente, iremos criar nossa instância EC2 associada à subnet. Também devemos associar uma "key-pair" para fazer o acesso via SSH. 
+
