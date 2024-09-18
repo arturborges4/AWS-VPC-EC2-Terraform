@@ -34,7 +34,7 @@ provider "aws" {
 
 Após configurar o <i>provider</i> podemos seguir para o próximo arquivo, que será a configuração da nossa VPC. 
 Para esse experimento, vamos criar uma rede privada que tem acesso à internet para que nossa instância consiga "pingar" para fora. 
-Vamos precisar de alguns recursos adicionais dentro da nossa VPC, que possibilitarão o acesso para fora. Esse recursos são uma Subnet com mapeamento de IP publico, um Internet Gateway associoado à nossa VPC, uma Route Table e uma Route Table Association para associar à nossa subnet pública e possibilitar o acesso à internet. 
+Vamos precisar de alguns recursos adicionais dentro da nossa VPC, que possibilitarão o acesso para fora. Esse recursos são uma Subnet com mapeamento de IP publico, um Internet Gateway associado à nossa VPC, uma Route Table e uma Route Table Association para associar à nossa subnet pública e possibilitar o acesso à internet. 
 
 ```
 resource "aws_vpc" "vpc" {
