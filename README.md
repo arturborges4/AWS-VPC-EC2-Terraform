@@ -6,7 +6,7 @@ Projeto para provisionar uma Rede Virtual VPC e uma máquina virtual EC2 na AWS 
 Demonstrar a eficiência no uso de Infraestructure-as-Code para o provisionamento de recursos em núvem. 
 
 <h2>Resumo</h2>
-O Terraform é uma ferramente de IaC desenvolvida pela HashiCorp que utiliza sua própria linguagem declarativa chamada HCL (HashiCorp Configuration Language). Com ela, podemos codificar todos os recursos que desejamos provisionar no nosso CSP. O Terraform faz a leitura de um diretório inteiro e executa todo o código presente, portanto podemos dividir os blocos ao invés de colocar tudo em um arquivo só e isso irá nos possibilitar um melhor controle sobre os recursos que serão criados. 
+O Terraform é uma ferramenta de IaC desenvolvida pela HashiCorp que utiliza sua própria linguagem declarativa chamada HCL (HashiCorp Configuration Language). Com ela, podemos codificar todos os recursos que desejamos provisionar no nosso CSP. O Terraform faz a leitura de um diretório inteiro e executa todo o código presente, portanto podemos dividir os blocos ao invés de colocar tudo em um arquivo só e isso irá nos possibilitar um melhor controle sobre os recursos que serão criados. 
 
 <h3>📜Passo a passo</h3>
 Primeiramente vamos fazer a criação do diretório e abrir com um editor de código (Visual Studio).
